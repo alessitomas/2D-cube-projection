@@ -7,9 +7,9 @@
 
 ## Representação 2D de Cubo em 3D 
 
-Matriw do cubo 3D:
+MatriW do cubo 3D:
     
-    -  8 Vértices do cubo, e cada vértice possui 3 coordenadas (x, y, z)
+    -  8 Vértices do cubo, e cada vértice possui 3 coordenadas (X, Y, z)
     
     -  Cada linha representa uma coordenada do vértice
     
@@ -17,33 +17,90 @@ Matriw do cubo 3D:
 
 
 $$
-cubo = \begin{bmatrix}
-x1 & x2 & x3 & x4 & x5 & x6 & x7 & x8\\
-y1 & y2 & y3 & y4 & y5 & y6 & y7 & y8\\
+cubo = \begin{bmatriX}
+X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
+Y1 & Y2 & Y3 & Y4 & Y5 & Y6 & Y7 & Y8\\
 z1 & z2 & z3 & z4 & z5 & z6 & z7 & z8\\
-\end{bmatrix}
+\end{bmatriX}
 \hspace{0.5in}
 $$
 
+### Chegando na Matriz projeção
+
 <img src="equa.jpg">
+
+### Sitema de equação considerando a projecao em X
+
+$$ 
+\begin{cases}
+    \begin{aligned}
+    Zp & = -d \\
+    W * Xp & = Xo \\
+    W & = Zo / -d \\
+    \end{aligned}
+\end{cases}
+$$
+
+### Sitema de equação considerando a projecao em Y
+
+$$ 
+\begin{cases}
+    \begin{aligned}
+    Zp & = -d \\
+    W * Yp & = Yo \\
+    W & = Zo / -d \\
+    \end{aligned}
+\end{cases}
+$$
+
+### Sitema de equação considerando as projecoes em X e Y (2D)
+
+$$ 
+\begin{cases}
+    \begin{aligned}
+    W * Xp & = Xo \\
+    W * Yp & = Yo \\
+    W & = Zo / -d \\
+    \end{aligned}
+\end{cases}
+$$
+
+### Matriz de projeção
 
 
 $$
-M_projecao = \begin{bmatrix}
+
+\begin{bmatrix}
+Xo\\
+Yo\\
+Zo\\
+\end{bmatrix}
+\hspace{0.5in}
+
+\begin{bmatrix}
 1 & 0 & 0\\
 0 & 1 & 0\\
 0 & 0 & -1/d\\
 \end{bmatrix}
 \hspace{0.5in}
+
+\begin{bmatrix}
+W * Xp\\
+W * Yp\\
+W\\
+\end{bmatrix}
+\hspace{0.5in}
+
+
 $$
 
 
 
 $$
 cubo_2d = \begin{bmatrix}
-w * xp1 & w * xp2 & w * xp3 & w * xp4 & w * xp5 & w * xp6 & w * xp7 & w * xp8\\
-w * yp1 & w * yp2 & w * yp3 & w * yp4 & w * yp5 & w * yp6 & w * yp7 & w * yp8\\
-w & w & w & w & w & w & w & w\\
+W * Xp1 & W * Xp2 & W * Xp3 & W * Xp4 & W * Xp5 & W * Xp6 & W * Xp7 & W * Xp8\\
+W * Yp1 & W * Yp2 & W * Yp3 & W * Yp4 & W * Yp5 & W * Yp6 & W * Yp7 & W * Yp8\\
+W & W & W & W & W & W & W & W\\
 \end{bmatrix}
 \hspace{0.5in}
 $$
