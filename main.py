@@ -7,6 +7,9 @@ pygame.init()
 # Distância focal
 d = 700
 
+# Cores
+RED = (255, 0, 0)
+
 # Ângulo de rotação
 angulo = np.deg2rad(1)
 
@@ -49,23 +52,35 @@ while rodando:
     # Multiplicando a matriz M pelo cubo, gerando um novo cubo com as transformações
     final = M @ cubo
 
+    if pygame.key.get_pressed()[pygame.K_DOWN]:
+        d += 10
+        translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+        final = M @ cubo
+
+    if pygame.key.get_pressed()[pygame.K_UP]:
+        d -= 10
+        translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+        final = M @ cubo
+
     # Preencher a tela com preto para não deixar rastro
     screen.fill((0, 0, 0))
 
     # Criar linhas que ligam os pontos do cubo -> Ao fazer a divisão, transforma o XpWp em Xp e/ou YpWp em Yp
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), 3)
+    pygame.draw.line(screen, RED, (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), 3)
+    pygame.draw.line(screen, RED, (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), 3)
+    pygame.draw.line(screen, RED, (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), 3)
+    pygame.draw.line(screen, RED, (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), 3)
+    pygame.draw.line(screen, RED, (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), 3)
+    pygame.draw.line(screen, RED, (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), 3)
 
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), 3)
-    pygame.draw.line(screen, (255, 0, 0), (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), 3)
+    pygame.draw.line(screen, RED, (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), 3)
+    pygame.draw.line(screen, RED, (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), 3)
+    pygame.draw.line(screen, RED, (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), (final[0, 4]/final[3, 4], final[1, 4]/final[3, 4]), 3)
+    pygame.draw.line(screen, RED, (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), (final[0, 5]/final[3, 5], final[1, 5]/final[3, 5]), 3)
+    pygame.draw.line(screen, RED, (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), (final[0, 6]/final[3, 6], final[1, 6]/final[3, 6]), 3)
+    pygame.draw.line(screen, RED, (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), (final[0, 7]/final[3, 7], final[1, 7]/final[3, 7]), 3)
     
     # Atualiza a tela
     pygame.display.update()
