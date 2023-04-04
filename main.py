@@ -5,7 +5,7 @@ import numpy as np
 pygame.init()
 
 # Distância focal
-d = 300
+d = 700
 
 # Ângulo de rotação
 angulo = np.deg2rad(1)
@@ -14,7 +14,7 @@ angulo = np.deg2rad(1)
 screen = pygame.display.set_mode((800, 600))
 
 # Criando o cubo
-cubo = np.array([[-100, -100, -100, 1], [100, -100, -100, 1], [100, 100, -100, 1], [-100, 100, -100, 1], [-100, -100, 100, 1], [100, -100, 100, 1], [100, 100, 100, 1], [-100, 100, 100, 1]]).T
+cubo = np.array([[-150, -150, -150, 1], [150, -150, -150, 1], [150, 150, -150, 1], [-150, 150, -150, 1], [-150, -150, 150, 1], [150, -150, 150, 1], [150, 150, 150, 1], [-150, 150, 150, 1]]).T
 
 # Matrizes de rotação
 rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], [0, np.sin(angulo), np.cos(angulo), 0], [0, 0, 0, 1]])
@@ -38,7 +38,7 @@ while rodando:
             rodando = False
 
     # Diminuindo a velocidade das transformações
-    pygame.time.delay(10)
+    pygame.time.delay(20)
 
     # Atualizando a rotação
     rotacao_total = rotacao_total @ rotacao_y @ rotacao_z @ rotacao_x
@@ -52,7 +52,7 @@ while rodando:
     # Preencher a tela com preto para não deixar rastro
     screen.fill((0, 0, 0))
 
-    # Criar linhas que ligam os pontos do cubo -> Transforma o XpWp em Xp e o YpWp em Yp
+    # Criar linhas que ligam os pontos do cubo -> Ao fazer a divisão, transforma o XpWp em Xp e/ou YpWp em Yp
     pygame.draw.line(screen, (255, 0, 0), (final[0, 0]/final[3, 0], final[1, 0]/final[3, 0]), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), 3)
     pygame.draw.line(screen, (255, 0, 0), (final[0, 1]/final[3, 1], final[1, 1]/final[3, 1]), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), 3)
     pygame.draw.line(screen, (255, 0, 0), (final[0, 2]/final[3, 2], final[1, 2]/final[3, 2]), (final[0, 3]/final[3, 3], final[1, 3]/final[3, 3]), 3)
