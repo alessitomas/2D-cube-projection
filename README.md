@@ -68,20 +68,14 @@ $$
 ### Matriz de projeção
 
 $$
-\begin{bmatrix}
-    1 & 2\\
-    2 & D
-\end{bmatrix} 
-\begin{bmatrix}
-    x \\
-    y
+M_P = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1/d 
 \end{bmatrix}
-=
-\begin{bmatrix}
-    3 \\
-    4 
-\end{bmatrix}
+\hspace{0.5in}
 $$
+
 
 
 
