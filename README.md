@@ -25,6 +25,20 @@ z1 & z2 & z3 & z4 & z5 & z6 & z7 & z8\\
 \hspace{0.5in}
 $$
 
+![alt text](equacao.pdf)
+
+
+$$
+M_projecao = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1/d\\
+\end{bmatrix}
+\hspace{0.5in}
+$$
+
+
+
 $$
 cubo_2d = \begin{bmatrix}
 w * xp1 & w * xp2 & w * xp3 & w * xp4 & w * xp5 & w * xp6 & w * xp7 & w * xp8\\
