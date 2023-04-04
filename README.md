@@ -69,20 +69,17 @@ $$
 
 $$
 \begin{bmatrix}
-    Xo\\
-    Yo\\
-    Zo
+    1 & 2\\
+    2 & D
 \end{bmatrix} 
 \begin{bmatrix}
-    1 & 0 & 0\\
-    0 & 1 & 0\\
-    0 & 0 & -1/d
+    x \\
+    y
 \end{bmatrix}
 =
 \begin{bmatrix}
-    W * Xp\\
-    W * Yp\\
-    W
+    3 \\
+    4 
 \end{bmatrix}
 $$
 
