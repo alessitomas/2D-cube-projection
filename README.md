@@ -20,12 +20,12 @@ $$
 cubo = \begin{bmatrix}
 X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
 Y1 & Y2 & Y3 & Y4 & Y5 & Y6 & Y7 & Y8\\
-z1 & z2 & z3 & z4 & z5 & z6 & z7 & z8\\
+Z1 & Z2 & Z3 & Z4 & Z5 & Z6 & Z7 & Z8\\
 \end{bmatrix}
 \hspace{0.5in}
 $$
 
-### Chegando na Matriz projeção
+### Chegando na MatriZ projeção
 
 <img src="equa.jpg">
 
@@ -65,25 +65,25 @@ $$
 \end{cases}
 $$
 
-### Matriz de projeção
+### MatriZ de projeção
 
 
 $$
 \begin{bmatrix}
 Xo\\
 Yo\\
-Zo\\
+Zo
 \end{bmatrix}
 \begin{bmatrix}
 1 & 0 & 0\\
 0 & 1 & 0\\
-0 & 0 & -1/d\\
+0 & 0 & -1/d
 \end{bmatrix}
 =
 \begin{bmatrix}
 W * Xp\\
 W * Yp\\
-W\\
+W
 \end{bmatrix}
 $$
 
