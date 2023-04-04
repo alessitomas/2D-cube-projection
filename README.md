@@ -69,29 +69,22 @@ $$
 
 
 $$
-
 \begin{bmatrix}
 Xo\\
 Yo\\
 Zo\\
 \end{bmatrix}
-\hspace{0.5in}
-
 \begin{bmatrix}
 1 & 0 & 0\\
 0 & 1 & 0\\
 0 & 0 & -1/d\\
 \end{bmatrix}
-\hspace{0.5in}
-
+=
 \begin{bmatrix}
 W * Xp\\
 W * Yp\\
 W\\
 \end{bmatrix}
-\hspace{0.5in}
-
-
 $$
 
 
