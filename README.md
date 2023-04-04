@@ -68,6 +68,13 @@ $$
 ### Matriz de projeção
 
 $$
+
+M_P = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1/d 
+\end{bmatrix}
+
 M_P = \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
