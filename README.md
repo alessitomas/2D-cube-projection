@@ -65,27 +65,27 @@ $$
 \end{cases}
 $$
 
-### MatriZ de projeção
-
+### Matriz de projeção
 
 $$
 \begin{bmatrix}
-Xo\\
-Yo\\
-Zo
-\end{bmatrix}
+    Xo\\
+    Yo\\
+    Zo
+\end{bmatrix} 
 \begin{bmatrix}
-1 & 0 & 0\\
-0 & 1 & 0\\
-0 & 0 & -1/d
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & -1/d
 \end{bmatrix}
 =
 \begin{bmatrix}
-W * Xp\\
-W * Yp\\
-W
+    W * Xp\\
+    W * Yp\\
+    W
 \end{bmatrix}
 $$
+
 
 
 
