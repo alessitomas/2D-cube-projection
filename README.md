@@ -7,27 +7,17 @@
 
 ## Representação 2D de Cubo em 3D 
 
-Matriz dos do cubo 3D
+Matriz do cubo 3D:
+    * 8 Vértices do cubo, e cada vértice possui 3 coordenadas (x, y, z)
+    * Cada linha representa uma coordenada do vértice
+    * Cada coluna representa um vértice do cubo
+
 
 $$
-R_x = \begin{bmatrix}
-1 & 0 & 0 & 0 \\
-0 & \cos(\theta) & -\sin(\theta) & 0 \\
-0 & \sin(\theta) & \cos(\theta) & 0 \\
-0 & 0 & 0 & 1
+M_cubo = \begin{bmatrix}
+x1 & x2 & x3 & x4 & x5 & x6 & x7 & x8\\
+y1 & y2 & y3 & y4 & y5 & y6 & y7 & y8\\
+z1 & z2 & z3 & z4 & z5 & z6 & z7 & z8\\
 \end{bmatrix}
 \hspace{0.5in}
-R_y = \begin{bmatrix}
-\cos(\theta) & 0 & \sin(\theta) & 0 \\
-0 & 1 & 0 & 0 \\
--\sin(\theta) & 0 & \cos(\theta) & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\hspace{0.5in}
-R_z = \begin{bmatrix}
-\cos(\theta) & - \sin(\theta) & 0 & 0 \\
-\sin(\theta) & \cos(\theta) & 0 & 0 \\
-0 & 0 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
 $$
