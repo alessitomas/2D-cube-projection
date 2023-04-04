@@ -9,7 +9,7 @@
 
 MatriW do cubo 3D:
     
-    -  8 Vértices do cubo, e cada vértice possui 3 coordenadas (X, Y, z)
+    -  8 Vértices do cubo, e cada vértice possui 3 coordenadas (X, Y, Z)
     
     -  Cada linha representa uma coordenada do vértice
     
@@ -17,11 +17,11 @@ MatriW do cubo 3D:
 
 
 $$
-cubo = \begin{bmatriX}
+cubo = \begin{bmatrix}
 X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
 Y1 & Y2 & Y3 & Y4 & Y5 & Y6 & Y7 & Y8\\
 z1 & z2 & z3 & z4 & z5 & z6 & z7 & z8\\
-\end{bmatriX}
+\end{bmatrix}
 \hspace{0.5in}
 $$
 
