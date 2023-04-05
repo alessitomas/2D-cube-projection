@@ -26,7 +26,7 @@ Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p
 \hspace{0.5in}
 $$
 
-## Representação 2D do Cubo em 3D 
+## Chegando na Matriz de projeção
     
 Objetivo: Para representar o cubo em 2D, é necessário encontrar as projeções Xp e YP das coordenadas de cada ponto do cubo 3D.
 
@@ -123,6 +123,7 @@ Onde @ representa multiplicação matricial.
 
 ### Aplicando a representação matricial, para o exemplo dos vértices de um Cubo 3D.
 
+
 $$
 cubo_3d = \begin{bmatrix}
 X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
@@ -168,7 +169,9 @@ Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
 \hspace{0.5in}
 $$
 
-## Matrizes de Rotação 
+## Tansformações
+
+### Matrizes de rotação 
 
 $$
 rotacao X = \begin{bmatrix}
@@ -200,11 +203,12 @@ sin(alfa) & cos(alfa) & 0 & 0 \\
 \hspace{0.5in}
 $$
 
-rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], [0, np.sin(angulo), np.cos(angulo), 0], [0, 0, 0, 1]])
+- ROTACAO_TOTAL: Definimos uma matriz de rotação 
+total juntando as matrizes de transformações na ordem em que aplicamos elas.
 
-rotacao_y = np.array([[np.cos(angulo), 0, np.sin(angulo), 0], [0, 1, 0, 0], [-np.sin(angulo), 0, np.cos(angulo), 0], [0, 0, 0, 1]])
+ROTACAO_TOTAL =  ROTACAO_Y @ ROTACAO_Z @ ROTACAO_X
 
-rotacao_z = np.array([[np.cos(angulo), -np.sin(angulo), 0, 0], [np.sin(angulo), np.cos(angulo), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+### 
 
 
 
