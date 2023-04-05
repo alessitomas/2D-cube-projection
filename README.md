@@ -361,6 +361,8 @@ Após aplicar todas as transformações necessárias no cubo utilizando as matri
 
 Álem disso, implementamos a funcionalidade de afastar / aproximar o cubo da tela utilizando o scroll do mouse. Isso foi feito através da altreação do valor da variável **d**, que é responsável por transladar o cubo em relação ao eixo Z. Quando o usuário aproxima o cubo da tela, o valor de **d** é decrementado, e quando o usuário afasta o cubo da tela, o valor de **d** é incrementado.
 
+Para aproximar o cubo da tela, basta usar o scroll do mouse para cima. Para afastar o cubo da tela, faça o contrário, ou seja, use o scroll do mouse para baixo.
+
 <br>
 
 ```python
@@ -391,4 +393,34 @@ Estas alterações podem ser visualizadas no gif abaixo:
 ![cubo](cubo2_gif.gif)
 
 <br>
+
+## Como utilizar a implementação
+
+**1.** Clone o repositório:
+
+```bash
+git clone https://github.com/alessitomas/2D-cube-projection.git
+```
+
+**2.** Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+**3.** Execute o arquivo **main.py**:
+
+```bash
+python main.py
+```
+
+<br>
+
+## Autores
+
+- [@leoscarlato](https://www.github.com/leoscarlato) (leonardos15@al.insper.edu.br)
+<br>
+- [@alessitomas](https://www.github.com/alessitomas) (tomasa@al.insper.edu.br)
+
+
         
