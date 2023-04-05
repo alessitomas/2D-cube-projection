@@ -275,20 +275,6 @@ No código, utilizamos grande parte das matrizes que descrevemos no modelo matem
 
     ```
 
-    <br>
-    Esta matriz, quando transposta, se torna a seguinte matriz:
-
-    $$
-    cubo = \begin{bmatrix}
-    -150 & 150 & 150 & -150 & -150 & 150 & 150 & -150\\
-    -150 & -150 & 150 & 150 & -150 & -150 & 150 & 150\\
-    -150 & -150 & -150 & -150 & 150 & 150 & 150 & 150\\
-    1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
-    \end{bmatrix}
-    $$
-
-    <br>
-
     Nesta matriz, cada coluna representa um ponto do cubo 3D. Por exemplo, a primeira coluna representa o ponto (-150, -150, -150), a segunda coluna representa o ponto (150, -150, -150), e assim por diante. A última linha é composta por 1's, pois caso contrário, a multiplicação das matrizes não seria possível.
 
     <br>
