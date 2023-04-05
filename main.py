@@ -24,13 +24,14 @@ rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], [0,
 rotacao_y = np.array([[np.cos(angulo), 0, np.sin(angulo), 0], [0, 1, 0, 0], [-np.sin(angulo), 0, np.cos(angulo), 0], [0, 0, 0, 1]])
 rotacao_z = np.array([[np.cos(angulo), -np.sin(angulo), 0, 0], [np.sin(angulo), np.cos(angulo), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
 
+# Juntando as matrizes de rotação em uma só
 rotacao_total = rotacao_x @ rotacao_y @ rotacao_z
 
 # Matrizes de translação no Z
 translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
 translacao_centro = np.array([[1, 0, 0, 400], [0, 1, 0, 300], [0, 0, 1, 0], [0, 0, 0, 1]])
 
-# Pinhole
+# Pinhole (matriz de projeção)
 m_pinhole = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,-d],[0,0,-(1/d),0]])
 
 # Loop principal
@@ -40,13 +41,17 @@ while rodando:
         if event.type == pygame.QUIT:
             rodando = False
 
+        # Movimentação do cubo ("zoom")
         if event.type == pygame.MOUSEBUTTONDOWN:
+
+            # Se usar o scroll do mouse para cima, aumenta o "d"
             if event.button == 4:
                 d += 25
                 translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
                 M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
                 final = M @ cubo
 
+            # Se usar o scroll do mouse para baixo, diminui o "d"
             if event.button == 5:
                 d -= 25
                 translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
