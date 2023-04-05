@@ -154,11 +154,16 @@ $$
 
 ### Projeções em 2D encontradas
 
+Dividindo a matriz cubo_2d por w chegamos na matriz projecoes_2d, onde estão as projeções possíveis para plotar o a projeção do cubo na plano 2D.
+
+projecoes_2d_ij = cubo_2d_ij / w
+
 
 $$
 projecoes_2d = \begin{bmatrix}
 X1p & X2p & X3p & X4p & X5p & X6p & X7p & X8p\\
-Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p
+Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
 \end{bmatrix}
 \hspace{0.5in}
 $$
