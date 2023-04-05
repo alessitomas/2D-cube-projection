@@ -168,6 +168,44 @@ Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
 \hspace{0.5in}
 $$
 
+## Matrizes de Rotação 
+
+$$
+rotacao X = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & cos(alfa) & -sin(alfa) & 0\\
+0 & sin(alfa) & cos(alfa) & 0\\
+0 & 0 & 0 & 1 
+\end{bmatrix}
+\hspace{0.5in}
+$$
+
+$$
+rotacao Y = \begin{bmatrix}
+cos(alfa) & 0 & sin(alfa) & 0 \\
+0 & 1 & 0 & 0\\
+-sin(alfa) & 0 & cos(alfa) & 0\\
+0 & 0 & 0 & 1 
+\end{bmatrix}
+\hspace{0.5in}
+$$
+
+$$
+rotacao Z = \begin{bmatrix}
+cos(alfa) & -sin(alfa) & 0 & 0\\
+sin(alfa) & cos(alfa) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{bmatrix}
+\hspace{0.5in}
+$$
+
+rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], [0, np.sin(angulo), np.cos(angulo), 0], [0, 0, 0, 1]])
+
+rotacao_y = np.array([[np.cos(angulo), 0, np.sin(angulo), 0], [0, 1, 0, 0], [-np.sin(angulo), 0, np.cos(angulo), 0], [0, 0, 0, 1]])
+
+rotacao_z = np.array([[np.cos(angulo), -np.sin(angulo), 0, 0], [np.sin(angulo), np.cos(angulo), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+
 
 
 
