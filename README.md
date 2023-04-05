@@ -225,10 +225,151 @@ sin(alfa) & cos(alfa) & 0 & 0 \\
 \hspace{0.5in}
 $$
 
-- Matriz **r**: definimos uma matriz de rotação 
-total juntando as matrizes de transformações na ordem em que aplicamos elas.
+<br>
 
-$$
-r = rotacao Z \cdot rotacao Y \cdot rotacao X
-$$
+## Explicando o código com base no modelo matemático
 
+### Importando as bibliotecas
+
+Primeiramente, precisávamos importar as bibliotecas necessárias para o desenvolvimento do projeto. Para isso, utilizamos a biblioteca **numpy** para trabalhar com matrizes e vetores, e **pygame** para a renderização gráfica do cubo.
+
+```python
+import numpy as np
+import pygame
+```
+
+### Definindo variáveis importantes
+
+Para que executássemos com sucesso o código, precisávamos definir algumas variáveis importantes para a construção das matrizes que seriam usadas na transformação do cubo:
+
+<br>
+
+- **d**: variável que armazena a distância "focal" da câmera, que é usada para a projeção do cubo no plano 2D.
+Na renderização gráfica, a distância focal é definida como a distância entre o centro da tela e o centro da projeção do cubo no plano 2D. Essa variável precisa ser grande o suficiente para que o usuário consiga visualizar o cubo na tela, mas não muito grande para que o cubo não fique muito pequeno.
+
+```python	
+d = 700
+```
+
+<br>
+
+- **angulo**: variável que armazena o ângulo de rotação do cubo em relação aos eixos. Esse valor é usado para a construção das matrizes de rotação, as quais dependem do valor do coseno e do seno do ângulo. No código, o ângulo é definido como 1 grau para que as transformações fossem feitas de forma suave ("lenta").
+
+```python
+angulo = 1
+```
+
+<br>
+
+### Matrizes utilizadas no código
+
+No código, utilizamos grande parte das matrizes que descrevemos no modelo matemático. Para facilitar a visualização, listamos abaixo as matrizes que foram utilizadas no código:
+
+- **cubo**: esta matriz representa os pontos do cubo 3D
+
+    ```python
+    cubo = np.array([[-150, -150, -150, 1], [150, -150, -150, 1], 
+    [150, 150, -150, 1], [-150, 150, -150, 1], 
+    [-150, -150, 150, 1], [150, -150, 150, 1], 
+    [150, 150, 150, 1], [-150, 150, 150, 1]]).T
+
+    ```
+
+    <br>
+    Esta matriz, quando transposta, se torna a seguinte matriz:
+
+    $$
+    cubo = \begin{bmatrix}
+    -150 & 150 & 150 & -150 & -150 & 150 & 150 & -150\\
+    -150 & -150 & 150 & 150 & -150 & -150 & 150 & 150\\
+    -150 & -150 & -150 & -150 & 150 & 150 & 150 & 150\\
+    1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
+    \end{bmatrix}
+    $$
+
+    <br>
+
+    Nesta matriz, cada coluna representa um ponto do cubo 3D. Por exemplo, a primeira coluna representa o ponto (-150, -150, -150), a segunda coluna representa o ponto (150, -150, -150), e assim por diante. A última linha é composta por 1's, pois caso contrário, a multiplicação das matrizes não seria possível.
+
+    <br>
+
+- **Matrizes de rotação**: estas matrizes são responsáveis por rotacionar o cubo em relação aos eixos.
+    
+    ```python
+
+    # Rotação em relação ao eixo X
+    rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], 
+    [0, np.sin(angulo), np.cos(angulo), 0], [0, 0, 0, 1]])
+
+    # Rotação em relação ao eixo Y
+    rotacao_y = np.array([[np.cos(angulo), 0, np.sin(angulo), 0], [0, 1, 0, 0], 
+    [-np.sin(angulo), 0, np.cos(angulo), 0], [0, 0, 0, 1]])
+
+    # Rotação em relação ao eixo Z
+    rotacao_z = np.array([[np.cos(angulo), -np.sin(angulo), 0, 0],
+    [np.sin(angulo), np.cos(angulo), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+    ```
+    <br>
+
+    - **rotacao_total**: matriz criada através da multiplicação matricial de todas as matrizes de rotação, resultando, portanto, em uma única matriz responsável por todo o movimento do cubo.
+
+        ```python
+        rotacao_total = rotacao_z @ rotacao_y @ rotacao_x
+        ```
+
+        No loop principal do código, esta matriz precisa ser atualizada a cada iteração, pois o ângulo de rotação é incrementado em 1 grau a cada iteração. Caso contrário, o cubo não iria se movimentar. Logo, dentro do loop principal, a matriz de rotação total é atualizada da seguinte forma:
+
+        ```python
+        rotacao_total = rotacao_total @ rotacao_z @ rotacao_y @ rotacao_x
+        ```
+
+        <br>
+
+ - **translacao_z**: matriz responsável portransladar o cubo em relação ao eixo Z. Essa matrizé usada para que usuário consiga visualizar o cubo.
+
+    <br>
+
+     ```python
+     translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0,0], [0, 0, 1, d], [0, 0, 0, 1]])
+     ```
+     <br>
+ - **translacao_centro**: matriz responsável por transladar o cubo para o centro da tela. Caso esta matriz não existisse, o cubo estaria presente no ponto (0,0), o qual na janela criada pela biblioteca pygame seria no canto superior esquerdo.
+
+     ```python
+     translacao_centro = np.array([[1, 0, 0, 400], [0, 1, 0, 300], 
+     [0, 0, 1, 0], [0, 0, 0, 1]])
+     ```
+
+    Para transladar para o centro da janela do pygame, precisávamos transladar o cubo para o ponto (400, 300), pois a janela do pygame tem dimensões 800x600.
+
+    <br>
+
+ - **m_pinhole**: esta matriz equivale à matriz de projeção do modelo matemático. Ela é responsável por projetar o cubo no plano 2D.
+
+     ```python
+     m_pinhole = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, -d], [0, 0, -(1/d), 0]])
+     ```
+
+    <br>
+
+ - **M**: esta matriz representa todas as transformações aplicadas sobre o cubo:
+
+    ```python
+    M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+    ```
+
+    <br>
+ - **final**: matriz final, resultante da multiplicação matricial entre a matriz M e a matriz cubo. Esta matriz representa os pontos do cubo projetados no plano 2D.
+
+    ```python
+    final = M @ cubo
+    ```
+
+    <br>
+
+Após aplicar todas as transformações necessárias no cubo utilizando as matrizes descritas no bloco acima e desenhar as linhas do cubo que ligam todos os pontos definidos na matriz **cubo**, conseguimos gerar com sucesso um cubo 3D rotacionando em 3 dimensões e projetado em 2D:
+
+<br>
+
+![cubo](cubo_gif.gif)
+        

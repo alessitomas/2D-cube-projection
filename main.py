@@ -24,7 +24,7 @@ rotacao_x = np.array([[1, 0, 0, 0], [0, np.cos(angulo), -np.sin(angulo), 0], [0,
 rotacao_y = np.array([[np.cos(angulo), 0, np.sin(angulo), 0], [0, 1, 0, 0], [-np.sin(angulo), 0, np.cos(angulo), 0], [0, 0, 0, 1]])
 rotacao_z = np.array([[np.cos(angulo), -np.sin(angulo), 0, 0], [np.sin(angulo), np.cos(angulo), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
 
-r = rotacao_x @ rotacao_y @ rotacao_z
+rotacao_total = rotacao_x @ rotacao_y @ rotacao_z
 
 # Matrizes de translação no Z
 translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
@@ -44,10 +44,10 @@ while rodando:
     pygame.time.delay(20)
 
     # Atualizando a rotação
-    r = r @ rotacao_y @ rotacao_z @ rotacao_x
+    rotacao_total = rotacao_total @ rotacao_y @ rotacao_z @ rotacao_x
 
     # Juntando todas as transformações em uma matriz só chamada M
-    M = translacao_centro @ m_pinhole @ translacao_z @ r
+    M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
 
     # Multiplicando a matriz M pelo cubo, gerando um novo cubo com as transformações
     final = M @ cubo
@@ -55,13 +55,13 @@ while rodando:
     if pygame.key.get_pressed()[pygame.K_DOWN]:
         d += 10
         translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = translacao_centro @ m_pinhole @ translacao_z @ r
+        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
         final = M @ cubo
 
     if pygame.key.get_pressed()[pygame.K_UP]:
         d -= 10
         translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = translacao_centro @ m_pinhole @ translacao_z @ r
+        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
         final = M @ cubo
 
     # Preencher a tela com preto para não deixar rastro
