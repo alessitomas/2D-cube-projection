@@ -358,4 +358,37 @@ Após aplicar todas as transformações necessárias no cubo utilizando as matri
 <br>
 
 ![cubo](cubo_gif.gif)
+
+Álem disso, implementamos a funcionalidade de afastar / aproximar o cubo da tela utilizando o scroll do mouse. Isso foi feito através da altreação do valor da variável **d**, que é responsável por transladar o cubo em relação ao eixo Z. Quando o usuário aproxima o cubo da tela, o valor de **d** é decrementado, e quando o usuário afasta o cubo da tela, o valor de **d** é incrementado.
+
+<br>
+
+```python
+# Aproxima o cubo da tela
+if event.type == pygame.MOUSEBUTTONDOWN:
+
+        if event.button == 4:   # Scroll para cima
+
+                d += 25
+                translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+                M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+                final = M @ cubo
+
+        if event.button == 5:   # Scroll para baixo
+
+                d -= 25
+                translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+                M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+                final = M @ cubo
+```
+
+<br>
+
+Estas alterações podem ser visualizadas no gif abaixo:
+
+<br>
+
+![cubo](cubo2_gif.gif)
+
+<br>
         

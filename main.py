@@ -40,6 +40,19 @@ while rodando:
         if event.type == pygame.QUIT:
             rodando = False
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 4:
+                d += 25
+                translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+                M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+                final = M @ cubo
+
+            if event.button == 5:
+                d -= 25
+                translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+                M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
+                final = M @ cubo
+
     # Diminuindo a velocidade das transformações
     pygame.time.delay(20)
 
@@ -51,18 +64,6 @@ while rodando:
 
     # Multiplicando a matriz M pelo cubo, gerando um novo cubo com as transformações
     final = M @ cubo
-
-    if pygame.key.get_pressed()[pygame.K_DOWN]:
-        d += 10
-        translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
-        final = M @ cubo
-
-    if pygame.key.get_pressed()[pygame.K_UP]:
-        d -= 10
-        translacao_z = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = translacao_centro @ m_pinhole @ translacao_z @ rotacao_total
-        final = M @ cubo
 
     # Preencher a tela com preto para não deixar rastro
     screen.fill((0, 0, 0))
