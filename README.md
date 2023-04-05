@@ -414,6 +414,8 @@ pip install -r requirements.txt
 python main.py
 ```
 
+**4.** Agora abrirá uma janela do pygame com o cubo 3D projetado em 2D. Assim como dito anteriormente, caso queira aproximar o cubo da tela, use o scroll do mouse para cima. Caso queira afastar o cubo da tela, use o scroll do mouse para baixo.
+
 <br>
 
 ## Autores
