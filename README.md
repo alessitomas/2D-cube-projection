@@ -1,9 +1,6 @@
 # 2D-cube-projection
 
-# Passo a passo para rodar o projeto
-
-
-# Descrição do modelo matemático do projeto
+## Descrição do modelo matemático do projeto
     
 Matriz inicial do Cubo 3D
 
@@ -26,7 +23,11 @@ Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p
 \hspace{0.5in}
 $$
 
-## Chegando na Matriz de projeção
+<br>
+
+### Chegando na Matriz de projeção
+
+<br>
     
 Objetivo: Para representar o cubo em 2D, é necessário encontrar as projeções Xp e YP das coordenadas de cada ponto do cubo 3D.
 
@@ -44,10 +45,15 @@ Um ponto que está no ponto $[x_o,z_o]$ deverá ser projetado no anteparo no pon
 
 Onde, x_p será a nossa projeção de x desejada e z_p será constante e igual a -d.
     
- 
+<br>
+
 ### Encontrando um sistema linear, envolvendo o Xp.
 
+<br>
+
 <img src="equa.jpg">
+
+<br>
 
 ### Sitema de equação considerando a projecao em X
 * Como demonstrado na imagem chegamos no Sitema de equação considerando a projecao em X.
@@ -226,6 +232,3 @@ $$
 r = rotacao Z \cdot rotacao Y \cdot rotacao X
 $$
 
-
-
-    
