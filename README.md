@@ -117,15 +117,19 @@ projecao =
 \end{bmatrix}
 $$
 
-PROJECAO = ORIGINAL @ MATRIZ PROJECAO
+<br>
 
-Onde @ representa multiplicação matricial.
+$$
+projecao = Matriz Projecao \cdot original
+$$
+
 
 ### Aplicando a representação matricial, para o exemplo dos vértices de um Cubo 3D.
 
+<br>
 
 $$
-cubo_3d = \begin{bmatrix}
+cubo2D = \begin{bmatrix}
 X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
 Y1 & Y2 & Y3 & Y4 & Y5 & Y6 & Y7 & Y8\\
 Z1 & Z2 & Z3 & Z4 & Z5 & Z6 & Z7 & Z8\\
@@ -142,10 +146,16 @@ Matriz Projecao =
 \end{bmatrix}
 $$
 
-cubo_2d = cubo_3d @ MATRIZ PROJECAO
+<br>
 
 $$
-cubo_2d = \begin{bmatrix}
+cubo2D = cubo3D \cdot Matriz Projecao
+$$
+
+<br>
+
+$$
+cubo2D = \begin{bmatrix}
 W * Xp1 & W * Xp2 & W * Xp3 & W * Xp4 & W * Xp5 & W * Xp6 & W * Xp7 & W * Xp8\\
 W * Yp1 & W * Yp2 & W * Yp3 & W * Yp4 & W * Yp5 & W * Yp6 & W * Yp7 & W * Yp8\\
 W & W & W & W & W & W & W & W\\
@@ -157,11 +167,17 @@ $$
 
 Dividindo a matriz cubo_2d por w chegamos na matriz projecoes_2d, onde estão as projeções possíveis para plotar o a projeção do cubo na plano 2D.
 
-projecoes_2d_ij = cubo_2d_ij / w
+<br>
+
+$$
+projecoes2D = cubo2D / W
+$$
+
+<br>
 
 
 $$
-projecoes_2d = \begin{bmatrix}
+projecoes2D = \begin{bmatrix}
 X1p & X2p & X3p & X4p & X5p & X6p & X7p & X8p\\
 Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
@@ -203,13 +219,12 @@ sin(alfa) & cos(alfa) & 0 & 0 \\
 \hspace{0.5in}
 $$
 
-- ROTACAO_TOTAL: Definimos uma matriz de rotação 
+- Matriz **r**: definimos uma matriz de rotação 
 total juntando as matrizes de transformações na ordem em que aplicamos elas.
 
-ROTACAO_TOTAL =  ROTACAO_Y @ ROTACAO_Z @ ROTACAO_X
-
-### 
-
+$$
+r = rotacao Z \cdot rotacao Y \cdot rotacao X
+$$
 
 
 
