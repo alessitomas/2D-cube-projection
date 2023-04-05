@@ -419,7 +419,7 @@ python main.py
 ## Autores
 
 - [@leoscarlato](https://www.github.com/leoscarlato) (leonardos15@al.insper.edu.br)
-<br>
+
 - [@alessitomas](https://www.github.com/alessitomas) (tomasa@al.insper.edu.br)
 
 
