@@ -83,7 +83,7 @@ $$
 \begin{cases}
     \begin{aligned}
     Zp & = -d \\
-        W * Yp & = Yo \\
+    W * Yp & = Yo \\
     W & = Zo / -d \\
     \end{aligned}
 \end{cases}
@@ -97,7 +97,8 @@ $$
     \begin{aligned}
     W * Xp & = Xo \\
     W * Yp & = Yo \\
-    W & = Zo / -d \\
+    Zp & = -d \\
+    W & = Zo / -d
     \end{aligned}
 \end{cases}
 $$
@@ -109,8 +110,8 @@ Matriz Projecao =
 \begin{bmatrix}
     1 & 0 & 0 & 0 \\
     0 & 1 & 0 & 0 \\
-    0 & 0 & -1/d & 0\\
-    0 & 0 & 0 & -d 
+    0 & 0 & 0 & -d \\
+    0 & 0 & -1/d & 0
 \end{bmatrix}
 $$
 
@@ -127,10 +128,10 @@ $$
 $$
 projecao = 
 \begin{bmatrix}
-    Xp * W \\
-    Yp * W \\
-        W\\
-       Zp
+    W * Xp  \\
+    W * Yp \\
+        Zp\\
+       W
 \end{bmatrix}
 $$
 
@@ -158,21 +159,20 @@ $$
 Matriz Projecao ou M pinhole
     
 
-
 $$
 Matriz Projecao = 
 \begin{bmatrix}
     1 & 0 & 0 & 0 \\
     0 & 1 & 0 & 0 \\
-    0 & 0 & -1/d & 0\\
-    0 & 0 & 0 & -d 
+    0 & 0 & 0 & -d \\
+    0 & 0 & -1/d & 0
 \end{bmatrix}
 $$
 
 <br>
 
 $$
-cubo2D = cubo3D \cdot Matriz Projecao
+cubo2D = Matriz Projecao \cdot cubo3D
 $$
 
 <br>
@@ -181,8 +181,8 @@ $$
 cubo2D = \begin{bmatrix}
 W * Xp1 & W * Xp2 & W * Xp3 & W * Xp4 & W * Xp5 & W * Xp6 & W * Xp7 & W * Xp8\\
 W * Yp1 & W * Yp2 & W * Yp3 & W * Yp4 & W * Yp5 & W * Yp6 & W * Yp7 & W * Yp8\\
-W & W & W & W & W & W & W & W\\
-Zp & Zp & Zp & Zp & Zp & Zp & Zp & Zp
+Zp & Zp & Zp & Zp & Zp & Zp & Zp & Zp\\
+W & W & W & W & W & W & W & W
 \end{bmatrix}
 \hspace{0.5in}
 $$
@@ -202,10 +202,10 @@ $$
 
 $$
 projecoes2D = \begin{bmatrix}
-X1p & X2p & X3p & X4p & X5p & X6p & X7p & X8p\\
-Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
-1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
-Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w
+Xp1 & Xp2 & Xp3 & Xp4 & Xp5 & Xp6 & Xp7 & Xp8\\
+Yp1 & Yp2 & Yp3 & Yp4 & Yp5 & Yp6 & Yp7 & Yp8\\
+Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w\\
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
 \end{bmatrix}
 \hspace{0.5in}
 $$
