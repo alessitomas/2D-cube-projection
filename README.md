@@ -1,7 +1,13 @@
 # 2D-cube-projection
 
 ## Descrição do modelo matemático do projeto
+
+Neste projeto, implementaremos a projeção de um mundo 3D em uma tela 2D usando o algoritmo da pinhole camera. 
+
+O objetivo deste projeto é fazer uma projeção em tempo real de um cubo em *wireframe* que gira em todas as direções.
     
+- Para isso, vamos primeiro analisar a matriz que representa as posições dos vértices do cubo em um plano 3D.
+
 Matriz inicial do Cubo 3D
 
 $$
@@ -12,6 +18,8 @@ Z1 & Z2 & Z3 & Z4 & Z5 & Z6 & Z7 & Z8\\
 \end{bmatrix}
 \hspace{0.5in}
 $$
+
+- Agora, vamos analisar a matriz final deseja que representa as posições dos vértices do cubo em um plano 2D.
     
 Matriz Final Desejada representação do Cubo 2D
 
@@ -99,9 +107,10 @@ $$
 $$
 Matriz Projecao = 
 \begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 1 & 0 \\
-    0 & 0 & -1/d
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & -1/d & 0\\
+    0 & 0 & 0 & -d 
 \end{bmatrix}
 $$
 
@@ -110,7 +119,8 @@ original =
 \begin{bmatrix}
     Xo \\
     Yo\\
-    Zo
+    Zo\\
+    1
 \end{bmatrix}
 $$
 
@@ -119,7 +129,8 @@ projecao =
 \begin{bmatrix}
     Xp * W \\
     Yp * W \\
-       W
+        W\\
+       Zp
 \end{bmatrix}
 $$
 
@@ -135,20 +146,26 @@ $$
 <br>
 
 $$
-cubo2D = \begin{bmatrix}
+cubo3D = \begin{bmatrix}
 X1 & X2 & X3 & X4 & X5 & X6 & X7 & X8\\
 Y1 & Y2 & Y3 & Y4 & Y5 & Y6 & Y7 & Y8\\
 Z1 & Z2 & Z3 & Z4 & Z5 & Z6 & Z7 & Z8\\
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
 \end{bmatrix}
 \hspace{0.5in}
 $$
 
+Matriz Projecao ou M pinhole
+    
+
+
 $$
 Matriz Projecao = 
 \begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 1 & 0 \\
-    0 & 0 & -1/d
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & -1/d & 0\\
+    0 & 0 & 0 & -d 
 \end{bmatrix}
 $$
 
@@ -165,6 +182,7 @@ cubo2D = \begin{bmatrix}
 W * Xp1 & W * Xp2 & W * Xp3 & W * Xp4 & W * Xp5 & W * Xp6 & W * Xp7 & W * Xp8\\
 W * Yp1 & W * Yp2 & W * Yp3 & W * Yp4 & W * Yp5 & W * Yp6 & W * Yp7 & W * Yp8\\
 W & W & W & W & W & W & W & W\\
+Zp & Zp & Zp & Zp & Zp & Zp & Zp & Zp
 \end{bmatrix}
 \hspace{0.5in}
 $$
@@ -186,7 +204,8 @@ $$
 projecoes2D = \begin{bmatrix}
 X1p & X2p & X3p & X4p & X5p & X6p & X7p & X8p\\
 Y1p & Y2p & Y3p & Y4p & Y5p & Y6p & Y7p & Y8p\\
-1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w & Zp/w
 \end{bmatrix}
 \hspace{0.5in}
 $$
